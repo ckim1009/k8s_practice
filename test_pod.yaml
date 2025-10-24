@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: nginx-pod
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
+
+#manifest file = yaml
+#kubectl apply -f test_pod.yaml
+#kubectl get pods # 실행중인 포드 확인
