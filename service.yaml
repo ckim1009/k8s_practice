@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: service
+
+spec:
+  type: NodePort # k8s 내부에서 해당 서비스 접속하기 위한 포트열고, 외부 접속 가능 
+  #type: ClusterIP # k8s 내부에서만 통신할 수 있는 IP주소 부여, 외부에선 요청할 수 없다
+  #type: LoadBalancer # 외부의 로드밸런서(AWS의 로드 밸런서)를 활용해 외부에서 접속할 수 있도록 연결
+  selector:
+    app: backend-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000
