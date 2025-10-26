@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nginx-deployment
+
+# 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-app
+
+  # Details of the pod
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+        - name:
+          image: spring-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+
+  # kubectl get deployment
